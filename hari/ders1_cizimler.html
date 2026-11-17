@@ -1,0 +1,178 @@
+<!doctype html>
+<html lang="tr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Hafta 1 · 1. Ders · Çizimler</title>
+<style>
+:root{--bg:#f6f7f9;--card:#fff;--ink:#16202f;--quiet:#5b6577;--edge:#a9b1be;--acc:#2f6fdb;--accbg:rgba(47,111,219,.14);--tint:#eef1f5;--line:#e3e6eb}
+@media (prefers-color-scheme:dark){:root{--bg:#0f141c;--card:#171e29;--ink:#e6ebf3;--quiet:#9aa5b6;--edge:#5d6878;--acc:#7ea6ff;--accbg:rgba(126,166,255,.18);--tint:#222b38;--line:#2a3340}}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.6 "Segoe UI",system-ui,-apple-system,sans-serif}
+main{max-width:860px;margin:0 auto;padding:32px 16px 64px;display:flex;flex-direction:column;gap:28px}
+header h1{margin:0 0 6px;font-size:1.8rem;line-height:1.2}
+header p{margin:0;color:var(--quiet)}
+section{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:20px;display:flex;flex-direction:column;gap:12px}
+section h2{margin:0;font-size:1.15rem}
+section p{margin:0;max-width:68ch}
+svg{width:100%;height:auto;display:block}
+svg text{font-family:"Segoe UI",system-ui,-apple-system,sans-serif}
+.i{fill:var(--ink)}.q{fill:var(--quiet)}.b{font-weight:600}
+.box{fill:none;stroke:var(--edge);stroke-width:1.25}
+.acc{fill:var(--accbg);stroke:var(--acc);stroke-width:2}
+.accl{fill:var(--accbg);stroke:var(--acc);stroke-width:1}
+.tint{fill:var(--tint);stroke:var(--edge);stroke-width:1}
+.ln{fill:none;stroke:var(--edge);stroke-width:1.25}
+.dash{stroke-dasharray:4 4}
+.ah{fill:var(--edge)}
+</style>
+</head>
+<body>
+<main>
+<header>
+  <h1>Hafta 1 · 1. Ders: Çizimler</h1>
+  <p>Hari, dersteki şekiller ve kısa açıklamaları burada. Mini sunumunu hazırlarken bunlara bakabilirsin.</p>
+</header>
+
+<section>
+<h2>1. Sunucunun içi</h2>
+<svg viewBox="0 0 760 352" role="img" aria-label="Uygulama, sunucunun işletim sistemi üzerinde çalışan bir process'tir" font-size="13">
+<defs><marker id="a1" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path class="ah" d="M0 0L10 5L0 10z"/></marker></defs>
+<text class="i b" x="24" y="30" font-size="15">Uygulama, sunucunun işletim sistemi üzerinde çalışan bir process'tir</text>
+<text class="q" x="24" y="50" font-size="11.5">Parantez içindekiler mutfak benzetmesi</text>
+<path class="ln" d="M134 140H184" marker-end="url(#a1)"/><path class="ln" d="M328 140H344" marker-end="url(#a1)"/>
+<rect class="box" x="24" y="112" width="110" height="56" rx="8"/>
+<text class="i b" x="79" y="136" text-anchor="middle">Kullanıcı</text><text class="q" x="79" y="152" text-anchor="middle" font-size="11.5">istek gönderir</text>
+<rect class="box" x="168" y="72" width="568" height="256" rx="10"/>
+<text class="i b" x="184" y="96">Sunucu (mutfak)</text>
+<rect class="box" x="184" y="112" width="144" height="56" rx="8"/>
+<text class="i b" x="256" y="136" text-anchor="middle">Port 443</text><text class="q" x="256" y="152" text-anchor="middle" font-size="11.5">(sipariş penceresi)</text>
+<rect class="acc" x="344" y="112" width="180" height="56" rx="8"/>
+<text class="i b" x="434" y="136" text-anchor="middle">Process: web</text><text class="q" x="434" y="152" text-anchor="middle" font-size="11.5">(çalışan aşçı)</text>
+<rect class="acc" x="540" y="112" width="180" height="56" rx="8"/>
+<text class="i b" x="630" y="136" text-anchor="middle">Process: veritabanı</text><text class="q" x="630" y="152" text-anchor="middle" font-size="11.5">(çalışan aşçı)</text>
+<rect class="tint" x="184" y="184" width="536" height="56" rx="8"/>
+<text class="i b" x="452" y="208" text-anchor="middle">İşletim sistemi (Linux, Windows)</text><text class="q" x="452" y="224" text-anchor="middle" font-size="11.5">(mutfağın düzenini kuran şef)</text>
+<rect class="box" x="184" y="256" width="260" height="56" rx="8"/>
+<text class="i b" x="314" y="280" text-anchor="middle">RAM</text><text class="q" x="314" y="296" text-anchor="middle" font-size="11.5">(tezgah: hızlı ama kapanınca silinir)</text>
+<rect class="box" x="460" y="256" width="260" height="56" rx="8"/>
+<text class="i b" x="590" y="280" text-anchor="middle">Disk</text><text class="q" x="590" y="296" text-anchor="middle" font-size="11.5">(kiler: büyük, yavaş ve kalıcı)</text>
+</svg>
+<p>Bir uygulama, sunucunun işletim sistemi üstünde çalışan bir programdır; buna process denir. Çalışırken RAM'i kullanır: RAM hızlıdır ama sunucu kapanınca içindekiler silinir. Kalıcı veriyi diskte tutar. Dışarıdan gelen istekler belli bir kapıdan girer; bu kapıya port denir.</p>
+</section>
+
+<section>
+<h2>2. 3-tier mimari: bankada "Gönder"</h2>
+<svg viewBox="0 0 760 232" role="img" aria-label="Gönder isteği üç katmandan geçer" font-size="13">
+<defs><marker id="a2" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path class="ah" d="M0 0L10 5L0 10z"/></marker></defs>
+<text class="i b" x="24" y="30" font-size="15">Gönder isteği üç katmandan geçer, cevap aynı yoldan döner</text>
+<text class="q" x="24" y="50" font-size="11.5">Mobil bankacılık örneği; alttaki kutular restorandaki karşılıkları</text>
+<path class="ln" d="M120 132H148" marker-end="url(#a2)"/><path class="ln" d="M324 132H352" marker-end="url(#a2)"/><path class="ln" d="M528 132H556" marker-end="url(#a2)"/>
+<path class="ln dash" d="M644 96V78H72V96" marker-end="url(#a2)"/>
+<text class="q" x="358" y="70" text-anchor="middle" font-size="11.5">cevap aynı yoldan geri döner</text>
+<rect class="box" x="24" y="96" width="96" height="112" rx="8"/><rect class="tint" x="34" y="164" width="76" height="32" rx="6"/>
+<text class="i b" x="72" y="120" text-anchor="middle">Telefon</text><text class="q" x="72" y="136" text-anchor="middle" font-size="11.5">Gönder'e</text><text class="q" x="72" y="152" text-anchor="middle" font-size="11.5">basılır</text><text class="i" x="72" y="184" text-anchor="middle" font-size="11.5">Müşteri</text>
+<rect class="box" x="148" y="96" width="176" height="112" rx="8"/><rect class="tint" x="158" y="164" width="156" height="32" rx="6"/>
+<text class="i b" x="236" y="120" text-anchor="middle">Web katmanı</text><text class="q" x="236" y="136" text-anchor="middle" font-size="11.5">İsteği karşılar,</text><text class="q" x="236" y="152" text-anchor="middle" font-size="11.5">ekranı gösterir</text><text class="i" x="236" y="184" text-anchor="middle" font-size="11.5">Garson</text>
+<rect class="box" x="352" y="96" width="176" height="112" rx="8"/><rect class="tint" x="362" y="164" width="156" height="32" rx="6"/>
+<text class="i b" x="440" y="120" text-anchor="middle">Uygulama katmanı</text><text class="q" x="440" y="136" text-anchor="middle" font-size="11.5">Bakiye yeterli mi,</text><text class="q" x="440" y="152" text-anchor="middle" font-size="11.5">limit aşıldı mı?</text><text class="i" x="440" y="184" text-anchor="middle" font-size="11.5">Mutfak</text>
+<rect class="box" x="556" y="96" width="176" height="112" rx="8"/><rect class="tint" x="566" y="164" width="156" height="32" rx="6"/>
+<text class="i b" x="644" y="120" text-anchor="middle">Veritabanı</text><text class="q" x="644" y="136" text-anchor="middle" font-size="11.5">Bakiyeyi düşer,</text><text class="q" x="644" y="152" text-anchor="middle" font-size="11.5">işlemi kaydeder</text><text class="i" x="644" y="184" text-anchor="middle" font-size="11.5">Kiler</text>
+</svg>
+<p>Mobil bankacılıkta "Gönder"e bastığında istek üç katmandan geçer. Web katmanı isteği karşılar ve ekranı gösterir. Uygulama katmanı kuralları kontrol eder: bakiye yeterli mi, limit aşıldı mı. Veritabanı bakiyeyi düşer ve işlemi kaydeder. Cevap aynı yoldan geri döner. Restoranda da aynısı olur: garson siparişi alır, mutfak hazırlar, malzeme kilerden gelir.</p>
+</section>
+
+<section>
+<h2>3. Socket, core, thread, vCPU</h2>
+<svg viewBox="0 0 760 356" role="img" aria-label="İşlemci katman katman sayılır" font-size="13">
+<defs><marker id="a3" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path class="ah" d="M0 0L10 5L0 10z"/></marker></defs>
+<text class="i b" x="24" y="30" font-size="15">İşlemci katman katman sayılır: socket, core, thread, vCPU</text>
+<text class="q" x="24" y="50" font-size="11.5">Her küçük kare bir core; renkli kareyi sağda büyüttük</text>
+<rect class="box" x="24" y="72" width="440" height="232" rx="10"/>
+<text class="i b" x="40" y="96">Fiziksel sunucu (host)</text>
+<rect class="box" x="40" y="112" width="196" height="176" rx="8"/>
+<text class="i b" x="138" y="138" text-anchor="middle">Socket 1 · 16 core</text>
+<g class="box" stroke-width="1">
+<rect x="78" y="152" width="24" height="24" rx="4"/><rect x="110" y="152" width="24" height="24" rx="4"/><rect x="142" y="152" width="24" height="24" rx="4"/><rect x="174" y="152" width="24" height="24" rx="4"/>
+<rect x="78" y="184" width="24" height="24" rx="4"/><rect x="110" y="184" width="24" height="24" rx="4"/><rect x="142" y="184" width="24" height="24" rx="4"/><rect x="174" y="184" width="24" height="24" rx="4"/>
+<rect x="78" y="216" width="24" height="24" rx="4"/><rect x="110" y="216" width="24" height="24" rx="4"/><rect x="142" y="216" width="24" height="24" rx="4"/><rect x="174" y="216" width="24" height="24" rx="4"/>
+<rect x="78" y="248" width="24" height="24" rx="4"/><rect x="110" y="248" width="24" height="24" rx="4"/><rect x="142" y="248" width="24" height="24" rx="4"/><rect x="174" y="248" width="24" height="24" rx="4"/>
+</g>
+<rect class="box" x="252" y="112" width="196" height="176" rx="8"/>
+<text class="i b" x="350" y="138" text-anchor="middle">Socket 2 · 16 core</text>
+<g class="box" stroke-width="1">
+<rect x="290" y="152" width="24" height="24" rx="4"/><rect x="322" y="152" width="24" height="24" rx="4"/><rect x="354" y="152" width="24" height="24" rx="4"/>
+<rect x="290" y="184" width="24" height="24" rx="4"/><rect x="322" y="184" width="24" height="24" rx="4"/><rect x="354" y="184" width="24" height="24" rx="4"/><rect x="386" y="184" width="24" height="24" rx="4"/>
+<rect x="290" y="216" width="24" height="24" rx="4"/><rect x="322" y="216" width="24" height="24" rx="4"/><rect x="354" y="216" width="24" height="24" rx="4"/><rect x="386" y="216" width="24" height="24" rx="4"/>
+<rect x="290" y="248" width="24" height="24" rx="4"/><rect x="322" y="248" width="24" height="24" rx="4"/><rect x="354" y="248" width="24" height="24" rx="4"/><rect x="386" y="248" width="24" height="24" rx="4"/>
+</g>
+<rect class="acc" x="386" y="152" width="24" height="24" rx="4"/>
+<path class="ln" d="M410 164L496 148" stroke-dasharray="3 4"/><path class="ln" d="M464 260H496" marker-end="url(#a3)"/>
+<rect class="acc" x="496" y="112" width="240" height="72" rx="8"/>
+<text class="i b" x="512" y="136">1 core</text><text class="q" x="512" y="152" font-size="11.5">hyperthreading açıksa aynı anda</text><text class="q" x="512" y="168" font-size="11.5">2 iş yürütür: 2 thread</text>
+<rect class="box" x="496" y="216" width="240" height="88" rx="8"/>
+<text class="i b" x="512" y="240">Sanal makine (VM): 8 vCPU</text><text class="q" x="512" y="256" font-size="11.5">vCPU sanal işlemcidir;</text><text class="q" x="512" y="272" font-size="11.5">hypervisor bunu host'un</text><text class="q" x="512" y="288" font-size="11.5">core'larından pay ederek verir</text>
+<text class="i b" x="24" y="336">2 socket × 16 core = 32 core; hyperthreading açıksa 64 thread</text>
+</svg>
+<p>Sunucunun işlemcisi katman katman sayılır. Socket, anakarttaki işlemci yuvasıdır; her işlemcinin içinde birden çok core (çekirdek) vardır. Hyperthreading açıksa her core aynı anda iki iş yürütür; bunlara thread denir. vCPU ise bir sanal makineye verilen sanal işlemcidir ve fiziksel core'lardan pay alır. Lisans konuşmalarında genelde core ya da vCPU sayılır.</p>
+</section>
+
+<section>
+<h2>4. On-prem, IaaS, PaaS, SaaS</h2>
+<svg viewBox="0 0 760 404" role="img" aria-label="Fark, hangi katmanı kimin yönettiğinde" font-size="13">
+<text class="i b" x="24" y="30" font-size="15">Fark, hangi katmanı kimin yönettiğinde</text>
+<text class="q" x="24" y="50" font-size="11.5">Hybrid: bunlardan birkaçını birlikte kullanmak</text>
+<text class="i b" x="263" y="84" text-anchor="middle">On-prem</text><text class="q" x="263" y="102" text-anchor="middle" font-size="11.5">Kendi evin</text>
+<text class="i b" x="397" y="84" text-anchor="middle">IaaS</text><text class="q" x="397" y="102" text-anchor="middle" font-size="11.5">Boş kiralık daire</text>
+<text class="i b" x="531" y="84" text-anchor="middle">PaaS</text><text class="q" x="531" y="102" text-anchor="middle" font-size="11.5">Eşyalı daire</text>
+<text class="i b" x="665" y="84" text-anchor="middle">SaaS</text><text class="q" x="665" y="102" text-anchor="middle" font-size="11.5">Otel</text>
+<text class="i" x="24" y="145">Uygulama</text><text class="i" x="24" y="193">Uygulama altyapısı</text><text class="i" x="24" y="241">İşletim sistemi</text><text class="i" x="24" y="289">Sanallaştırma</text><text class="i" x="24" y="337">Donanım, veri merkezi</text>
+<g>
+<rect class="acc" x="200" y="120" width="126" height="40" rx="6"/><rect class="acc" x="200" y="168" width="126" height="40" rx="6"/><rect class="acc" x="200" y="216" width="126" height="40" rx="6"/><rect class="acc" x="200" y="264" width="126" height="40" rx="6"/><rect class="acc" x="200" y="312" width="126" height="40" rx="6"/>
+<rect class="acc" x="334" y="120" width="126" height="40" rx="6"/><rect class="acc" x="334" y="168" width="126" height="40" rx="6"/><rect class="acc" x="334" y="216" width="126" height="40" rx="6"/><rect class="tint" x="334" y="264" width="126" height="40" rx="6"/><rect class="tint" x="334" y="312" width="126" height="40" rx="6"/>
+<rect class="acc" x="468" y="120" width="126" height="40" rx="6"/><rect class="tint" x="468" y="168" width="126" height="40" rx="6"/><rect class="tint" x="468" y="216" width="126" height="40" rx="6"/><rect class="tint" x="468" y="264" width="126" height="40" rx="6"/><rect class="tint" x="468" y="312" width="126" height="40" rx="6"/>
+<rect class="tint" x="602" y="120" width="126" height="40" rx="6"/><rect class="tint" x="602" y="168" width="126" height="40" rx="6"/><rect class="tint" x="602" y="216" width="126" height="40" rx="6"/><rect class="tint" x="602" y="264" width="126" height="40" rx="6"/><rect class="tint" x="602" y="312" width="126" height="40" rx="6"/>
+</g>
+<rect class="acc" x="24" y="370" width="18" height="12" rx="3"/><text class="i" x="50" y="380" font-size="11.5">Müşteri yönetir</text>
+<rect class="tint" x="180" y="370" width="18" height="12" rx="3"/><text class="i" x="206" y="380" font-size="11.5">Sağlayıcı yönetir</text>
+</svg>
+<p>On-prem, IaaS, PaaS ve SaaS arasındaki fark, hangi katmanı kimin yönettiğinde. On-prem'de her şey müşterinin. IaaS'ta sağlayıcı donanımı ve sanallaştırmayı verir, gerisi müşteride. PaaS'ta müşteri sadece kendi uygulamasını getirir. SaaS'ta her şey sağlayıcıda; müşteri sadece kullanır. Hybrid, bunlardan birkaçının birlikte kullanılması.</p>
+</section>
+
+<section>
+<h2>Özet: tek resimde</h2>
+<svg viewBox="0 0 760 472" role="img" aria-label="Gönder tuşuna basınca istek üç katmandan geçer, her katman bir sunucuda çalışır" font-size="13">
+<defs><marker id="a5" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path class="ah" d="M0 0L10 5L0 10z"/></marker></defs>
+<text class="i b" x="24" y="30" font-size="15">Gönder tuşuna basınca istek üç katmandan geçer, her katman bir sunucuda çalışır</text>
+<text class="q" x="24" y="50" font-size="11.5">Renkli kutular Cognos'taki karşılıklar</text>
+<path class="ln" d="M120 132H148" marker-end="url(#a5)"/><path class="ln" d="M324 132H352" marker-end="url(#a5)"/><path class="ln" d="M528 132H556" marker-end="url(#a5)"/>
+<path class="ln dash" d="M644 96V78H72V96" marker-end="url(#a5)"/>
+<text class="q" x="358" y="70" text-anchor="middle" font-size="11.5">cevap aynı yoldan geri döner</text>
+<rect class="box" x="24" y="96" width="96" height="72" rx="8"/>
+<text class="i b" x="72" y="120" text-anchor="middle">Tarayıcı</text><text class="q" x="72" y="136" text-anchor="middle" font-size="11.5">Gönder'e</text><text class="q" x="72" y="152" text-anchor="middle" font-size="11.5">basılır</text>
+<rect class="box" x="148" y="96" width="176" height="136" rx="8"/><rect class="accl" x="158" y="164" width="156" height="56" rx="6"/>
+<text class="i b" x="236" y="120" text-anchor="middle">Web sunucusu</text><text class="q" x="236" y="136" text-anchor="middle" font-size="11.5">İsteği karşılar,</text><text class="q" x="236" y="152" text-anchor="middle" font-size="11.5">ekranı gösterir</text>
+<text class="q" x="236" y="179" text-anchor="middle" font-size="11.5">Cognos'ta</text><text class="i b" x="236" y="195" text-anchor="middle" font-size="11.5">Gateway</text>
+<rect class="box" x="352" y="96" width="176" height="136" rx="8"/><rect class="accl" x="362" y="164" width="156" height="56" rx="6"/>
+<text class="i b" x="440" y="120" text-anchor="middle">Uygulama sunucusu</text><text class="q" x="440" y="136" text-anchor="middle" font-size="11.5">Kuralları uygular:</text><text class="q" x="440" y="152" text-anchor="middle" font-size="11.5">bakiye, günlük limit</text>
+<text class="q" x="440" y="179" text-anchor="middle" font-size="11.5">Cognos'ta</text><text class="i b" x="440" y="195" text-anchor="middle" font-size="11.5">Application tier</text><text class="i b" x="440" y="211" text-anchor="middle" font-size="11.5">Content Manager</text>
+<rect class="box" x="556" y="96" width="176" height="136" rx="8"/><rect class="accl" x="566" y="164" width="156" height="56" rx="6"/>
+<text class="i b" x="644" y="120" text-anchor="middle">Veritabanı</text><text class="q" x="644" y="136" text-anchor="middle" font-size="11.5">Bakiyeyi düşer,</text><text class="q" x="644" y="152" text-anchor="middle" font-size="11.5">işlemi kaydeder</text>
+<text class="q" x="644" y="179" text-anchor="middle" font-size="11.5">Cognos'ta</text><text class="i b" x="644" y="195" text-anchor="middle" font-size="11.5">Content store</text>
+<path class="ln" d="M352 232L24 272" stroke-width="1" stroke-dasharray="3 4"/><path class="ln" d="M528 232L732 272" stroke-width="1" stroke-dasharray="3 4"/>
+<rect class="box" x="24" y="272" width="708" height="176" rx="10"/>
+<text class="i b" x="40" y="293">Her sunucunun içi: mutfak benzetmesi</text>
+<rect class="box" x="40" y="304" width="214" height="56" rx="8"/><rect class="box" x="270" y="304" width="214" height="56" rx="8"/><rect class="box" x="500" y="304" width="214" height="56" rx="8"/>
+<rect class="box" x="40" y="376" width="214" height="56" rx="8"/><rect class="box" x="270" y="376" width="214" height="56" rx="8"/><rect class="box" x="500" y="376" width="214" height="56" rx="8"/>
+<text class="i b" x="52" y="328">İşletim sistemi</text><text class="q" x="52" y="344" font-size="11.5">Şef: mutfağın düzenini kurar</text>
+<text class="i b" x="282" y="328">Process</text><text class="q" x="282" y="344" font-size="11.5">Aşçı: çalışan uygulama</text>
+<text class="i b" x="512" y="328">Port</text><text class="q" x="512" y="344" font-size="11.5">Siparişin geldiği pencere</text>
+<text class="i b" x="52" y="400">RAM</text><text class="q" x="52" y="416" font-size="11.5">Tezgah: hızlı ama geçici</text>
+<text class="i b" x="282" y="400">Disk</text><text class="q" x="282" y="416" font-size="11.5">Kiler: büyük ve kalıcı</text>
+<text class="i b" x="512" y="400">CPU</text><text class="q" x="512" y="416" font-size="11.5">socket → core → thread</text>
+</svg>
+<p>Dersin özeti bu resim. Üstte bir tıklamanın geçtiği üç katman ve Cognos'taki karşılıkları, altta her sunucunun içinde ne olduğu var.</p>
+</section>
+</main>
+</body>
+</html>
