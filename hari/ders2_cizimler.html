@@ -93,6 +93,45 @@ dd{margin:2px 0 0}
 <dt>IBM nerede?</dt><dd>Db2 işlem tarafında, Event Streams ve Confluent taşıma tarafında, watsonx.data analiz tarafında. watsonx.data açık tablo formatlarıyla çalışan bir lakehouse; Snowflake ya da Databricks'in yanında da çalışabiliyor ve müşteriler genelde maliyeti düşürmek için konuşuyor.</dd>
 </dl>
 </section>
+
+<section>
+<h2>Ek: Cluster nedir?</h2>
+<svg viewBox="0 0 760 300" role="img" aria-label="Cluster: birden fazla sunucu tek bir sistem gibi çalışır" font-size="13">
+<defs><marker id="ac" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path class="ah" d="M0 0L10 5L0 10z"/></marker></defs>
+<text class="i b" x="24" y="30" font-size="15">Cluster: birden fazla sunucu dışarıdan tek bir sistem gibi çalışır</text>
+<text class="q" x="24" y="50" font-size="11.5">Bir node düşerse diğerleri işi devralır (failover); yük artınca yeni node eklenir</text>
+<rect class="box" x="24" y="120" width="120" height="56" rx="8"/>
+<text class="i b" x="84" y="144" text-anchor="middle">Kullanıcılar</text><text class="q" x="84" y="160" text-anchor="middle" font-size="11.5">tek adres görür</text>
+<path class="ln" d="M144 148H184" marker-end="url(#ac)"/>
+<rect x="184" y="72" width="552" height="200" rx="10" fill="none" stroke="var(--acc)" stroke-width="2"/>
+<text class="i b" x="200" y="96">Cluster (dışarıdan tek sistem)</text>
+<rect class="box" x="200" y="112" width="164" height="72" rx="8"/>
+<text class="i b" x="282" y="136" text-anchor="middle">Node 1</text><text class="q" x="282" y="152" text-anchor="middle" font-size="11.5">çalışıyor</text><text class="q" x="282" y="168" text-anchor="middle" font-size="11.5">yükü paylaşıyor</text>
+<rect x="380" y="112" width="164" height="72" rx="8" fill="var(--tint)" stroke="var(--edge)" stroke-width="1.25" stroke-dasharray="4 4"/>
+<text class="i b" x="462" y="136" text-anchor="middle">Node 2</text><text class="q" x="462" y="152" text-anchor="middle" font-size="11.5">düştü</text><text class="q" x="462" y="168" text-anchor="middle" font-size="11.5">işi diğerlerine geçti</text>
+<rect class="box" x="560" y="112" width="164" height="72" rx="8"/>
+<text class="i b" x="642" y="136" text-anchor="middle">Node 3</text><text class="q" x="642" y="152" text-anchor="middle" font-size="11.5">çalışıyor</text><text class="q" x="642" y="168" text-anchor="middle" font-size="11.5">yükü paylaşıyor</text>
+<text class="i" x="200" y="216" font-size="12">Active-active: bütün node'lar aynı anda çalışır ve yükü paylaşır.</text>
+<text class="i" x="200" y="240" font-size="12">Active-passive: biri çalışır, diğeri yedekte bekler; ilki düşerse devreye girer.</text>
+</svg>
+<p>Cluster, birden fazla sunucunun dışarıdan tek bir sistem gibi görünerek birlikte çalışması. Cluster'daki her sunucuya node denir. İki amacı var: biri kesintisizlik (bir node düşerse diğerleri işi devralır; buna failover, bu özelliğe de HA denir), diğeri büyüme (yük artınca yeni node eklenir). Restoranda tek aşçılı mutfak, aşçı hastalanınca kapanır; üç aşçılı ekipte biri gelmezse diğerleri devam eder. Cluster bu ekip.</p>
+<div class="wrap">
+<table>
+<thead><tr><th>Teknik ekipten duyabileceğin cümle</th><th>Ne demek</th></tr></thead>
+<tbody>
+<tr><td>"VMware cluster'ımız 4 host'tan oluşuyor."</td><td>4 fiziksel sunucu tek havuz gibi yönetiliyor. VM'ler host'lar arasında taşınabiliyor; bir host düşerse üstündeki VM'ler diğerlerinde yeniden açılıyor. Lisansta "hangi core'lar sayılır" sorusu buradan çıkıyor.</td></tr>
+<tr><td>"OpenShift cluster'ı 3 master, 6 worker node."</td><td>Container'ları yöneten bir Kubernetes cluster'ı. Master node'lar yönetiyor, worker node'larda uygulamalar çalışıyor; bir worker düşerse container'lar başka worker'da başlatılıyor.</td></tr>
+<tr><td>"Db2'yi pureScale ile cluster yaptık." / "Oracle RAC kullanıyoruz."</td><td>Birden fazla sunucu aynı veritabanına aynı anda hizmet veriyor (active-active); biri düşerse veritabanı çalışmaya devam ediyor.</td></tr>
+<tr><td>"Db2 HADR ile primary ve standby var."</td><td>Active-passive: biri çalışıyor, diğeri verinin kopyasını tutup bekliyor; primary düşerse standby devralıyor.</td></tr>
+<tr><td>"Kafka cluster'ımız 3 broker'dan oluşuyor."</td><td>Kafka'da her sunucuya broker denir. Veri broker'lara dağıtılıp kopyalanıyor; bir broker düşerse veri kaybolmuyor.</td></tr>
+<tr><td>"Databricks'te iş için bir cluster açıp kapatıyoruz."</td><td>Bir veri işleme işi için geçici bir sunucu grubu açılıyor, iş bitince kapatılıyor; maliyet açık kaldığı sürece işliyor.</td></tr>
+<tr><td>"Cognos'u cluster yaptık."</td><td>Birden fazla application tier sunucusu birlikte çalışıyor; biri düşerse raporlar diğerinden çalışmaya devam ediyor.</td></tr>
+<tr><td>"Cluster'a iki node ekledik." / "Bir node düştü ama sistem ayakta."</td><td>İlki: sistem büyütüldü. İkincisi: HA çalıştı, failover oldu.</td></tr>
+</tbody>
+</table>
+</div>
+<p>Müşteri "cluster" dediğinde soracağın üç soru: Kaç node var? Active-active mi, active-passive mi? Hangi yazılımın cluster'ı (VMware, OpenShift, Db2, Kafka)?</p>
+</section>
 </main>
 </body>
 </html>
