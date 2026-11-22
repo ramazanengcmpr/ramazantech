@@ -1,0 +1,98 @@
+<!doctype html>
+<html lang="tr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Hafta 1 · 2. Ders · Çizimler</title>
+<style>
+:root{--bg:#f6f7f9;--card:#fff;--ink:#16202f;--quiet:#5b6577;--edge:#a9b1be;--tint:#eef1f5;--line:#e3e6eb;--acc:#2f6fdb}
+@media (prefers-color-scheme:dark){:root{--bg:#0f141c;--card:#171e29;--ink:#e6ebf3;--quiet:#9aa5b6;--edge:#5d6878;--tint:#222b38;--line:#2a3340;--acc:#7ea6ff}}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.6 "Segoe UI",system-ui,-apple-system,sans-serif}
+main{max-width:900px;margin:0 auto;padding:32px 16px 64px;display:flex;flex-direction:column;gap:28px}
+header h1{margin:0 0 6px;font-size:1.8rem;line-height:1.2}
+header p{margin:0;color:var(--quiet)}
+section{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:20px;display:flex;flex-direction:column;gap:12px}
+section h2{margin:0;font-size:1.15rem}
+section p{margin:0;max-width:70ch}
+svg{width:100%;height:auto;display:block}
+svg text{font-family:"Segoe UI",system-ui,-apple-system,sans-serif}
+.i{fill:var(--ink)}.q{fill:var(--quiet)}.b{font-weight:600}
+.box{fill:none;stroke:var(--edge);stroke-width:1.25}
+.tint{fill:var(--tint);stroke:var(--edge);stroke-width:1}
+.ln{fill:none;stroke:var(--edge);stroke-width:1.25}
+.ah{fill:var(--edge)}
+.wrap{overflow-x:auto}
+table{border-collapse:collapse;width:100%;min-width:640px;font-size:.92rem}
+th,td{text-align:left;vertical-align:top;padding:10px 12px;border-bottom:1px solid var(--line)}
+th{font-size:.78rem;text-transform:uppercase;letter-spacing:.05em;color:var(--quiet)}
+td:first-child{font-weight:600;white-space:nowrap}
+dl{margin:0;display:grid;gap:12px}
+dt{font-weight:600}
+dd{margin:2px 0 0}
+</style>
+</head>
+<body>
+<main>
+<header>
+  <h1>Hafta 1 · 2. Ders: Db2, Confluent, Snowflake, Databricks</h1>
+  <p>Hari, bu hafta sorduğun sorunun cevabı burada. Kısacası: dördü de veriyle ilgili ama verinin farklı anlarında duruyorlar.</p>
+</header>
+
+<section>
+<h2>Verinin yolculuğu</h2>
+<svg viewBox="0 0 760 328" role="img" aria-label="Dördü de veriyle ilgili ama verinin farklı anlarında duruyor" font-size="13">
+<defs><marker id="ar" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path class="ah" d="M0 0L10 5L0 10z"/></marker></defs>
+<text class="i b" x="24" y="30" font-size="15">Dördü de veriyle ilgili ama verinin farklı anlarında duruyor</text>
+<text class="q" x="24" y="50" font-size="11.5">Soldan sağa: veri kaydedilir, taşınır, analiz edilir; alt satırlar restorandaki karşılıkları</text>
+<path class="ln" d="M144 164H168" marker-end="url(#ar)"/><path class="ln" d="M328 164H360" marker-end="url(#ar)"/>
+<path class="ln" d="M520 164H536V124H552" marker-end="url(#ar)"/><path class="ln" d="M536 164V228H552" marker-end="url(#ar)"/><path class="ln" d="M440 208V240" marker-end="url(#ar)"/>
+<rect class="box" x="24" y="128" width="120" height="72" rx="8"/>
+<text class="i b" x="84" y="152" text-anchor="middle">Uygulama</text><text class="q" x="84" y="168" text-anchor="middle" font-size="11.5">para gönderilir</text>
+<rect class="box" x="168" y="120" width="160" height="88" rx="8"/>
+<text class="i b" x="248" y="144" text-anchor="middle">Db2</text><text class="q" x="248" y="160" text-anchor="middle" font-size="11.5">İşlemi anında kaydeder</text><text class="q" x="248" y="176" text-anchor="middle" font-size="11.5">(veritabanı)</text><text class="i" x="248" y="196" text-anchor="middle" font-size="11.5">Kasa defteri</text>
+<rect class="box" x="360" y="120" width="160" height="88" rx="8"/>
+<text class="i b" x="440" y="144" text-anchor="middle">Confluent</text><text class="q" x="440" y="160" text-anchor="middle" font-size="11.5">Olayı anında taşır</text><text class="q" x="440" y="176" text-anchor="middle" font-size="11.5">(event streaming)</text><text class="i" x="440" y="196" text-anchor="middle" font-size="11.5">Siparişi ileten sistem</text>
+<rect class="tint" x="352" y="240" width="176" height="40" rx="8"/>
+<text class="i" x="440" y="264" text-anchor="middle" font-size="11.5">Fraud, SMS, kampanya ekranı</text>
+<rect class="box" x="552" y="80" width="184" height="88" rx="8"/>
+<text class="i b" x="644" y="104" text-anchor="middle">Snowflake</text><text class="q" x="644" y="120" text-anchor="middle" font-size="11.5">SQL ile rapor ve analiz</text><text class="q" x="644" y="136" text-anchor="middle" font-size="11.5">(cloud veri ambarı)</text><text class="i" x="644" y="156" text-anchor="middle" font-size="11.5">Muhasebe ofisi</text>
+<rect class="box" x="552" y="184" width="184" height="88" rx="8"/>
+<text class="i b" x="644" y="208" text-anchor="middle">Databricks</text><text class="q" x="644" y="224" text-anchor="middle" font-size="11.5">Büyük veri işleme ve AI</text><text class="q" x="644" y="240" text-anchor="middle" font-size="11.5">(lakehouse)</text><text class="i" x="644" y="260" text-anchor="middle" font-size="11.5">Ar-Ge laboratuvarı</text>
+<text class="q b" x="84" y="308" text-anchor="middle" font-size="11.5">Kaynak</text><text class="q b" x="248" y="308" text-anchor="middle" font-size="11.5">1 · Kaydedilir</text><text class="q b" x="440" y="308" text-anchor="middle" font-size="11.5">2 · Taşınır</text><text class="q b" x="644" y="308" text-anchor="middle" font-size="11.5">3 · Analiz edilir</text>
+</svg>
+<p>Müşteri para gönderdiğinde işlem önce Db2'ye kaydedilir. Confluent bu olayı anında ilgilenen sistemlere taşır: fraud kontrolü, SMS, kampanya ekranı ve analiz ortamları. Snowflake ve Databricks biriken veriyi saklar ve analiz ettirir; biri daha çok raporlama, diğeri daha çok büyük veri ve AI için.</p>
+</section>
+
+<section>
+<h2>Dördü yan yana</h2>
+<div class="wrap">
+<table>
+<thead><tr><th></th><th>Db2</th><th>Confluent</th><th>Snowflake</th><th>Databricks</th></tr></thead>
+<tbody>
+<tr><td>Ne yapar?</td><td>İşlemleri anında kaydeder (veritabanı)</td><td>Olayları sistemler arasında anında taşır (event streaming)</td><td>Biriken veriyi SQL ile analiz ettirir (veri ambarı)</td><td>Büyük veriyi işler, AI modeli eğitir (lakehouse)</td></tr>
+<tr><td>Veri hangi halde?</td><td>Durur, güncel durum</td><td>Hareket halinde</td><td>Durur, geçmiş</td><td>Durur, ham ve işlenmiş</td></tr>
+<tr><td>Tipik soru</td><td>"Bu hesabın bakiyesi ne?"</td><td>"Bu işlem olduğu anda kimler haberdar olmalı?"</td><td>"Geçen çeyrek hangi şubede ne kadar işlem oldu?"</td><td>"Hangi müşteriler bizi bırakmak üzere?"</td></tr>
+<tr><td>Kim kullanır?</td><td>Uygulamalar ve DBA</td><td>Entegrasyon ve platform ekipleri</td><td>Raporlama ve iş analizi ekipleri</td><td>Veri mühendisleri ve veri bilimciler</td></tr>
+<tr><td>Nerede çalışır?</td><td>On-prem, cloud, mainframe</td><td>Cloud ya da on-prem</td><td>Sadece cloud (SaaS)</td><td>Cloud (AWS, Azure, Google)</td></tr>
+<tr><td>Restoranda</td><td>Kasa defteri</td><td>Siparişi herkese ileten sistem</td><td>Muhasebe ofisi</td><td>Ar-Ge laboratuvarı</td></tr>
+<tr><td>IBM'deki karşılığı</td><td>Db2'nin kendisi</td><td>Event Streams, Confluent</td><td>watsonx.data, Db2 Warehouse, Netezza</td><td>watsonx.data, watsonx.ai</td></tr>
+</tbody>
+</table>
+</div>
+</section>
+
+<section>
+<h2>Kısa açıklamalar</h2>
+<dl>
+<dt>Db2</dt><dd>IBM'in veritabanı. İşi, çok sayıda küçük işlemi (para transferi, sipariş) anında ve hatasız kaydetmek. "Bu hesabın şu anki bakiyesi ne?" sorusunun cevabı burada durur. On-prem, cloud ve mainframe'de çalışabilir.</dd>
+<dt>Confluent</dt><dd>Kafka üzerine kurulu event streaming platformu. Veriyi saklamak ya da analiz etmek için değil, taşımak için var: "şu işlem oldu" olayını aynı saniyede ilgilenen tüm sistemlere ulaştırır. Olayları bir süre saklayıp tekrar okutabilir ama analiz yeri değildir.</dd>
+<dt>Snowflake</dt><dd>Cloud'da çalışan veri ambarı (data warehouse). Farklı sistemlerden gelen veriyi toplar, düzenli tablolar halinde saklar ve SQL ile hızlı rapor almayı sağlar. Sadece cloud'da çalışır; kullandığın kadar ödersin. Daha çok raporlama ve iş analizi ekiplerinin aracı.</dd>
+<dt>Databricks</dt><dd>Lakehouse platformu. O da veriyi toplar ama özellikle büyük ve düzensiz veriyi işlemek, veri mühendisliği yapmak ve makine öğrenmesi modelleri eğitmek için güçlü. Daha çok veri mühendisleri ve veri bilimcilerin aracı. Son yıllarda Snowflake ile birbirine yaklaştılar.</dd>
+<dt>Neden Db2'yi analiz için kullanmıyoruz?</dt><dd>Db2 anlık işlemler için tasarlandı. Yılların verisini taramak hem yavaş olur hem de o anda işlem yapan müşterileri yavaşlatır. Bu yüzden veri analiz için ayrı bir yere taşınır. Bu farka OLTP (işlem) ve OLAP (analiz) denir; 7. haftada göreceğiz.</dd>
+<dt>IBM nerede?</dt><dd>Db2 işlem tarafında, Event Streams ve Confluent taşıma tarafında, watsonx.data analiz tarafında. watsonx.data açık tablo formatlarıyla çalışan bir lakehouse; Snowflake ya da Databricks'in yanında da çalışabiliyor ve müşteriler genelde maliyeti düşürmek için konuşuyor.</dd>
+</dl>
+</section>
+</main>
+</body>
+</html>
