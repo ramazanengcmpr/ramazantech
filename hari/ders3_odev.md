@@ -18,3 +18,5 @@ hypervisor, ESXi, vCenter, vMotion, HA, DRS, container, Kubernetes, pod, OpenShi
 ## Yardım
 
 Çizimler, kısa açıklamalar ve ECM tablosu: `ders3_cizimler.html`
+
+Örnek müşteri görüşmesi (3. slayt için fikir verir): `ders3_ornek_gorusme.md`
