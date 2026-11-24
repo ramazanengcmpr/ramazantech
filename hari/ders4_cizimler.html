@@ -1,0 +1,158 @@
+<!doctype html>
+<html lang="tr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Hafta 3 · 1. Ders · Çizimler</title>
+<style>
+:root{--bg:#f6f7f9;--card:#fff;--ink:#16202f;--quiet:#5b6577;--edge:#a9b1be;--tint:#eef1f5;--line:#e3e6eb;--acc:#2f6fdb;--accbg:rgba(47,111,219,.14);--warn:#c46a12;--warnbg:rgba(196,106,18,.14)}
+@media (prefers-color-scheme:dark){:root{--bg:#0f141c;--card:#171e29;--ink:#e6ebf3;--quiet:#9aa5b6;--edge:#5d6878;--tint:#222b38;--line:#2a3340;--acc:#7ea6ff;--accbg:rgba(126,166,255,.18);--warn:#f0a35a;--warnbg:rgba(240,163,90,.18)}}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.6 "Segoe UI",system-ui,-apple-system,sans-serif}
+main{max-width:900px;margin:0 auto;padding:32px 16px 64px;display:flex;flex-direction:column;gap:28px}
+header h1{margin:0 0 6px;font-size:1.8rem;line-height:1.2}
+header p{margin:0;color:var(--quiet)}
+section{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:20px;display:flex;flex-direction:column;gap:12px}
+section h2{margin:0;font-size:1.15rem}
+section p{margin:0;max-width:70ch}
+svg{width:100%;height:auto;display:block}
+svg text{font-family:"Segoe UI",system-ui,-apple-system,sans-serif}
+.i{fill:var(--ink)}.q{fill:var(--quiet)}.b{font-weight:600}
+.box{fill:none;stroke:var(--edge);stroke-width:1.25}
+.tint{fill:var(--tint);stroke:var(--edge);stroke-width:1}
+.acc{fill:var(--accbg);stroke:var(--acc);stroke-width:2}
+.warn{fill:var(--warnbg);stroke:var(--warn);stroke-width:2}
+.ln{fill:none;stroke:var(--edge);stroke-width:1.25}
+.dash{stroke-dasharray:4 4}
+.ah{fill:var(--edge)}
+</style>
+</head>
+<body>
+<main>
+<header>
+  <h1>Hafta 3 · 1. Ders: API, Confluent, RAG ve MCP</h1>
+  <p>Hari, bu dersin çizimleri ve kısa açıklamaları burada.</p>
+</header>
+
+<section>
+<h2>1. API nasıl çalışır</h2>
+<svg viewBox="0 0 760 350" role="img" aria-label="API'de biri sorar ve cevabı bekler; event'te olay yayınlanır ve herkes dinler" font-size="13">
+<defs><marker id="a1" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path class="ah" d="M0 0L10 5L0 10z"/></marker></defs>
+<text class="i b" x="24" y="30" font-size="15">API'de biri sorar ve cevabı bekler; event'te olay yayınlanır, herkes dinler</text>
+<text class="q" x="24" y="50" font-size="11.5">Üstte bir API isteği, altta API ile event'in farkı</text>
+<rect class="box" x="24" y="76" width="140" height="64" rx="8"/>
+<text class="i b" x="94" y="102" text-anchor="middle">Mobil uygulama</text><text class="q" x="94" y="120" text-anchor="middle" font-size="11.5">bakiyeyi sorar</text>
+<rect class="tint" x="260" y="76" width="170" height="64" rx="8"/>
+<text class="i b" x="345" y="102" text-anchor="middle">API gateway</text><text class="q" x="345" y="120" text-anchor="middle" font-size="11.5">kimlik, limit, güvenlik</text>
+<rect class="box" x="526" y="76" width="210" height="64" rx="8"/>
+<text class="i b" x="631" y="102" text-anchor="middle">Banka sistemi</text><text class="q" x="631" y="120" text-anchor="middle" font-size="11.5">Db2'den bakiyeyi okur</text>
+<path class="ln" d="M164 96H258" marker-end="url(#a1)"/><path class="ln" d="M430 96H524" marker-end="url(#a1)"/>
+<path class="ln dash" d="M524 122H432" marker-end="url(#a1)"/><path class="ln dash" d="M258 122H166" marker-end="url(#a1)"/>
+<text class="q" x="212" y="90" text-anchor="middle" font-size="11">istek</text><text class="q" x="478" y="90" text-anchor="middle" font-size="11">istek</text>
+<text class="q" x="212" y="136" text-anchor="middle" font-size="11">cevap</text><text class="q" x="478" y="136" text-anchor="middle" font-size="11">cevap</text>
+<text class="i" x="24" y="170" font-size="12">İstek: GET /hesaplar/123/bakiye  (yanında kimlik için token)</text>
+<text class="i" x="24" y="190" font-size="12">Cevap: { "bakiye": 15200 }  (JSON formatında)</text>
+<line x1="24" y1="212" x2="736" y2="212" stroke="var(--line)"/>
+<text class="i b" x="24" y="238">API: telefon araması (bire bir)</text>
+<rect class="box" x="24" y="254" width="130" height="44" rx="8"/><text class="i" x="89" y="281" text-anchor="middle" font-size="12">Mobil uygulama</text>
+<rect class="box" x="226" y="254" width="130" height="44" rx="8"/><text class="i" x="291" y="281" text-anchor="middle" font-size="12">Banka sistemi</text>
+<path class="ln" d="M154 268H224" marker-end="url(#a1)"/><path class="ln dash" d="M224 286H156" marker-end="url(#a1)"/>
+<text class="q" x="24" y="324" font-size="11.5">Biri sorar, cevabı bekler. Örnek: "Bakiyem ne?"</text>
+<text class="i b" x="404" y="238">Event: radyo yayını (bire çok)</text>
+<rect class="box" x="404" y="262" width="108" height="40" rx="8"/><text class="i" x="458" y="287" text-anchor="middle" font-size="12">Kart sistemi</text>
+<rect class="acc" x="540" y="262" width="76" height="40" rx="8"/><text class="i b" x="578" y="287" text-anchor="middle" font-size="12">Topic</text>
+<rect class="box" x="650" y="228" width="86" height="26" rx="6"/><text class="i" x="693" y="246" text-anchor="middle" font-size="11.5">Fraud</text>
+<rect class="box" x="650" y="269" width="86" height="26" rx="6"/><text class="i" x="693" y="287" text-anchor="middle" font-size="11.5">SMS</text>
+<rect class="box" x="650" y="310" width="86" height="26" rx="6"/><text class="i" x="693" y="328" text-anchor="middle" font-size="11.5">Rapor</text>
+<path class="ln" d="M512 282H538" marker-end="url(#a1)"/>
+<path class="ln" d="M616 282L648 241" marker-end="url(#a1)"/><path class="ln" d="M616 282H648" marker-end="url(#a1)"/><path class="ln" d="M616 282L648 323" marker-end="url(#a1)"/>
+</svg>
+<p>API, bir yazılımın başka bir yazılımdan bir şey istemesi için kuralları belli bir kapı; restorandaki garson gibi. Uygulama bir istek gönderir, cevap genelde JSON formatında döner. Kurumlar API'lerini API gateway üzerinden yönetir (IBM'de API Connect ve webMethods). API'de soran cevabı bekler; event'te ise sistem "şu oldu" diye yayınlar ve ilgilenen herkes aynı anda dinler. "Bakiyem ne?" API ile sorulur; "kart işlemi oldu" event olarak yayınlanır.</p>
+</section>
+
+<section>
+<h2>2. Confluent'in içi</h2>
+<svg viewBox="0 0 760 390" role="img" aria-label="Confluent: producer'lar topic'e yazar, consumer'lar okur" font-size="13">
+<defs><marker id="a2" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path class="ah" d="M0 0L10 5L0 10z"/></marker></defs>
+<text class="i b" x="24" y="30" font-size="15">Producer'lar topic'e yazar, consumer'lar kendi hızında okur</text>
+<text class="q" x="24" y="50" font-size="11.5">Topic "kart-islemleri" 3 parçaya (partition) bölünüp 3 broker'a dağıtılmış</text>
+<rect class="box" x="24" y="110" width="140" height="52" rx="8"/><text class="i b" x="94" y="132" text-anchor="middle">Kart sistemi</text><text class="q" x="94" y="150" text-anchor="middle" font-size="11.5">producer</text>
+<rect class="box" x="24" y="200" width="140" height="52" rx="8"/><text class="i b" x="94" y="222" text-anchor="middle">Db2</text><text class="q" x="94" y="240" text-anchor="middle" font-size="11.5">connector ile producer</text>
+<path class="ln" d="M164 136H194" marker-end="url(#a2)"/><path class="ln" d="M164 226H194" marker-end="url(#a2)"/>
+<rect class="box" x="196" y="68" width="364" height="260" rx="10"/>
+<text class="i b" x="212" y="90">Confluent (Kafka cluster)</text>
+<rect class="box" x="212" y="104" width="108" height="150" rx="8"/><text class="i b" x="266" y="126" text-anchor="middle" font-size="12">Broker 1</text>
+<rect class="acc" x="222" y="140" width="88" height="44" rx="6"/><text class="i" x="266" y="160" text-anchor="middle" font-size="11.5">kart-islemleri</text><text class="i" x="266" y="176" text-anchor="middle" font-size="11.5">parça 0</text>
+<rect class="tint" x="222" y="196" width="88" height="44" rx="6"/><text class="q" x="266" y="216" text-anchor="middle" font-size="11.5">parça 1</text><text class="q" x="266" y="232" text-anchor="middle" font-size="11">kopya</text>
+<rect class="box" x="330" y="104" width="108" height="150" rx="8"/><text class="i b" x="384" y="126" text-anchor="middle" font-size="12">Broker 2</text>
+<rect class="acc" x="340" y="140" width="88" height="44" rx="6"/><text class="i" x="384" y="160" text-anchor="middle" font-size="11.5">kart-islemleri</text><text class="i" x="384" y="176" text-anchor="middle" font-size="11.5">parça 1</text>
+<rect class="tint" x="340" y="196" width="88" height="44" rx="6"/><text class="q" x="384" y="216" text-anchor="middle" font-size="11.5">parça 2</text><text class="q" x="384" y="232" text-anchor="middle" font-size="11">kopya</text>
+<rect class="box" x="448" y="104" width="100" height="150" rx="8"/><text class="i b" x="498" y="126" text-anchor="middle" font-size="12">Broker 3</text>
+<rect class="acc" x="456" y="140" width="84" height="44" rx="6"/><text class="i" x="498" y="160" text-anchor="middle" font-size="11.5">kart-islemleri</text><text class="i" x="498" y="176" text-anchor="middle" font-size="11.5">parça 2</text>
+<rect class="tint" x="456" y="196" width="84" height="44" rx="6"/><text class="q" x="498" y="216" text-anchor="middle" font-size="11.5">parça 0</text><text class="q" x="498" y="232" text-anchor="middle" font-size="11">kopya</text>
+<rect class="tint" x="212" y="268" width="336" height="44" rx="6"/><text class="i" x="380" y="288" text-anchor="middle" font-size="12">Schema Registry: event formatının sözleşmesi</text><text class="q" x="380" y="304" text-anchor="middle" font-size="11">format bozulursa okuyanlar bozulmaz</text>
+<rect class="warn" x="592" y="80" width="144" height="48" rx="8"/><text class="i b" x="664" y="100" text-anchor="middle" font-size="12">Fraud</text><text class="q" x="664" y="117" text-anchor="middle" font-size="11">Flink kuralı, anında alarm</text>
+<rect class="box" x="592" y="140" width="144" height="48" rx="8"/><text class="i b" x="664" y="160" text-anchor="middle" font-size="12">SMS</text><text class="q" x="664" y="177" text-anchor="middle" font-size="11">müşteriye mesaj</text>
+<rect class="box" x="592" y="200" width="144" height="48" rx="8"/><text class="i b" x="664" y="220" text-anchor="middle" font-size="12">Snowflake</text><text class="q" x="664" y="237" text-anchor="middle" font-size="11">connector ile yazılır</text>
+<rect class="box" x="592" y="260" width="144" height="48" rx="8"/><text class="i b" x="664" y="280" text-anchor="middle" font-size="12">Tableflow</text><text class="q" x="664" y="297" text-anchor="middle" font-size="11">topic'i tablo olarak açar</text>
+<path class="ln" d="M560 104H590" marker-end="url(#a2)"/><path class="ln" d="M560 164H590" marker-end="url(#a2)"/><path class="ln" d="M560 224H590" marker-end="url(#a2)"/><path class="ln" d="M560 284H590" marker-end="url(#a2)"/>
+<text class="q" x="664" y="72" text-anchor="middle" font-size="11">consumer'lar</text>
+<text class="q" x="24" y="352" font-size="11.5">Topic: kategori · Producer: yazan · Consumer: okuyan · Broker: Kafka sunucusu · Offset: okuyanın kaldığı yer</text>
+<text class="q" x="24" y="372" font-size="11.5">Her parça başka bir broker'da kopyalanır; bir broker düşerse veri kaybolmaz</text>
+</svg>
+<p>Confluent'in altında açık kaynak Apache Kafka var. Event'ler topic denen kategorilere yazılır (WhatsApp grubu gibi). Topic'e yazan sisteme producer, okuyana consumer denir; her consumer kendi hızında okur ve nerede kaldığı (offset) ayrı tutulur. Kafka cluster'ındaki her sunucuya broker denir; topic parçalara bölünüp broker'lara dağıtılır ve kopyalanır. Event'ler okunduktan sonra silinmez, belirlenen süre saklanır. Confluent bunun üstüne connector'lar (kod yazmadan bağlanma), Schema Registry (format sözleşmesi), Flink (akarken işleme) ve Tableflow (tablo olarak açma) ekler.</p>
+</section>
+
+<section>
+<h2>3. RAG</h2>
+<svg viewBox="0 0 760 320" role="img" aria-label="RAG: model cevabı kurumun dokümanlarından bulup verir" font-size="13">
+<defs><marker id="a3" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path class="ah" d="M0 0L10 5L0 10z"/></marker></defs>
+<text class="i b" x="24" y="30" font-size="15">RAG: model cevabı ezberinden değil, kurumun dokümanlarından verir</text>
+<text class="q" x="24" y="50" font-size="11.5">Açık kitap sınavı gibi: önce ilgili sayfayı bul, sonra cevapla</text>
+<text class="i b" x="24" y="84">1 · Hazırlık (bir kere yapılır)</text>
+<rect class="box" x="24" y="96" width="160" height="48" rx="8"/><text class="i" x="104" y="116" text-anchor="middle" font-size="12">Dokümanlar</text><text class="q" x="104" y="133" text-anchor="middle" font-size="11">ECM'deki dosyalar</text>
+<rect class="box" x="208" y="96" width="160" height="48" rx="8"/><text class="i" x="288" y="124" text-anchor="middle" font-size="12">Küçük parçalara böl</text>
+<rect class="box" x="392" y="96" width="160" height="48" rx="8"/><text class="i" x="472" y="116" text-anchor="middle" font-size="12">Embedding'e çevir</text><text class="q" x="472" y="133" text-anchor="middle" font-size="11">anlamı temsil eden sayılar</text>
+<rect class="tint" x="576" y="96" width="160" height="48" rx="8"/><text class="i b" x="656" y="116" text-anchor="middle" font-size="12">Vector database</text><text class="q" x="656" y="133" text-anchor="middle" font-size="11">örneğin Milvus</text>
+<path class="ln" d="M184 120H206" marker-end="url(#a3)"/><path class="ln" d="M368 120H390" marker-end="url(#a3)"/><path class="ln" d="M552 120H574" marker-end="url(#a3)"/>
+<text class="i b" x="24" y="200">2 · Soru anı</text>
+<rect class="box" x="24" y="212" width="160" height="56" rx="8"/><text class="i" x="104" y="236" text-anchor="middle" font-size="12">Çalışan sorar</text><text class="q" x="104" y="254" text-anchor="middle" font-size="11">"Harcırah limiti ne?"</text>
+<rect class="box" x="208" y="212" width="160" height="56" rx="8"/><text class="i" x="288" y="236" text-anchor="middle" font-size="12">Anlamca en yakın</text><text class="i" x="288" y="254" text-anchor="middle" font-size="12">parçaları bul</text>
+<rect class="box" x="392" y="212" width="160" height="56" rx="8"/><text class="i" x="472" y="236" text-anchor="middle" font-size="12">Soru + parçalar</text><text class="i" x="472" y="254" text-anchor="middle" font-size="12">modele verilir</text>
+<rect class="acc" x="576" y="212" width="160" height="56" rx="8"/><text class="i b" x="656" y="236" text-anchor="middle" font-size="12">Cevap</text><text class="q" x="656" y="254" text-anchor="middle" font-size="11">hangi dokümandan, gösterir</text>
+<path class="ln" d="M184 240H206" marker-end="url(#a3)"/><path class="ln" d="M368 240H390" marker-end="url(#a3)"/><path class="ln" d="M552 240H574" marker-end="url(#a3)"/>
+<path class="ln dash" d="M656 144V170H288V210" marker-end="url(#a3)"/>
+<text class="q" x="24" y="300" font-size="11.5">Model yeniden eğitilmez; doküman değişince cevap da değişir. Kullanıcı yetkisi olmayan dokümanı cevapta görmemeli.</text>
+</svg>
+<p>Dil modelleri kurumun iç bilgisini bilmez; bilmediğini sorarsan bazen uydurur (hallucination). RAG (Retrieval Augmented Generation), cevaplamadan önce ilgili bilgiyi bulup modele verir. Hazırlıkta dokümanlar parçalanır, embedding'e çevrilir ve vector database'e konur. Soru anında soruya anlamca en yakın parçalar bulunur ve soruyla birlikte modele verilir; model cevabı o parçalardan üretir ve kaynağını gösterebilir. RAG'in kaynağı çoğunlukla ECM'deki dokümanlardır.</p>
+</section>
+
+<section>
+<h2>4. MCP ve MCP katalogları</h2>
+<svg viewBox="0 0 760 380" role="img" aria-label="MCP: agent'lar sistemlere tek tip prizle bağlanır; katalog ve gateway kontrol eder" font-size="13">
+<defs><marker id="a4" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path class="ah" d="M0 0L10 5L0 10z"/></marker></defs>
+<text class="i b" x="24" y="30" font-size="15">MCP: agent'lar sistemlere tek tip prizle bağlanır</text>
+<text class="q" x="24" y="50" font-size="11.5">Katalog hangi server'ın onaylı olduğunu, gateway kimin neyi çağırdığını tutar</text>
+<rect class="acc" x="24" y="166" width="150" height="72" rx="8"/><text class="i b" x="99" y="192" text-anchor="middle">Agent</text><text class="q" x="99" y="210" text-anchor="middle" font-size="11">MCP client</text><text class="q" x="99" y="226" text-anchor="middle" font-size="11">ör. watsonx Orchestrate</text>
+<rect class="tint" x="214" y="72" width="140" height="56" rx="8"/><text class="i b" x="284" y="96" text-anchor="middle" font-size="12">MCP kataloğu</text><text class="q" x="284" y="114" text-anchor="middle" font-size="11">onaylı server listesi</text>
+<rect class="warn" x="214" y="156" width="140" height="92" rx="8"/><text class="i b" x="284" y="184" text-anchor="middle" font-size="12">MCP gateway</text><text class="q" x="284" y="204" text-anchor="middle" font-size="11">yetki kontrolü</text><text class="q" x="284" y="220" text-anchor="middle" font-size="11">her çağrıyı kaydeder</text>
+<path class="ln dash" d="M284 128V154"/>
+<path class="ln" d="M174 202H212" marker-end="url(#a4)"/>
+<rect class="box" x="394" y="72" width="150" height="44" rx="8"/><text class="i" x="469" y="99" text-anchor="middle" font-size="12">MCP server: Db2</text>
+<rect class="box" x="394" y="136" width="150" height="44" rx="8"/><text class="i" x="469" y="163" text-anchor="middle" font-size="12">MCP server: CRM</text>
+<rect class="box" x="394" y="200" width="150" height="44" rx="8"/><text class="i" x="469" y="227" text-anchor="middle" font-size="12">MCP server: Confluent</text>
+<rect class="box" x="394" y="264" width="150" height="44" rx="8"/><text class="i" x="469" y="291" text-anchor="middle" font-size="12">MCP server: ECM</text>
+<path class="ln" d="M354 202L392 94" marker-end="url(#a4)"/><path class="ln" d="M354 202L392 158" marker-end="url(#a4)"/><path class="ln" d="M354 202L392 222" marker-end="url(#a4)"/><path class="ln" d="M354 202L392 286" marker-end="url(#a4)"/>
+<rect class="tint" x="586" y="72" width="150" height="44" rx="8"/><text class="i" x="661" y="99" text-anchor="middle" font-size="12">Db2 veritabanı</text>
+<rect class="tint" x="586" y="136" width="150" height="44" rx="8"/><text class="i" x="661" y="163" text-anchor="middle" font-size="12">CRM sistemi</text>
+<rect class="tint" x="586" y="200" width="150" height="44" rx="8"/><text class="i" x="661" y="227" text-anchor="middle" font-size="12">Confluent</text>
+<rect class="tint" x="586" y="264" width="150" height="44" rx="8"/><text class="i" x="661" y="291" text-anchor="middle" font-size="12">FileNet (ECM)</text>
+<path class="ln" d="M544 94H584" marker-end="url(#a4)"/><path class="ln" d="M544 158H584" marker-end="url(#a4)"/><path class="ln" d="M544 222H584" marker-end="url(#a4)"/><path class="ln" d="M544 286H584" marker-end="url(#a4)"/>
+<text class="q" x="564" y="66" text-anchor="middle" font-size="11">API</text>
+<text class="q" x="24" y="344" font-size="11.5">Bir sistem bir kere MCP server yazar; MCP konuşan her agent onu kullanabilir. MCP server'lar arkada çoğunlukla API çağırır.</text>
+</svg>
+<p>Agent, sadece cevap vermeyen, araç kullanarak iş de yapan AI'dır. MCP (Model Context Protocol), agent'ların sistemlere bağlanması için açık standart; "AI için USB-C" deniyor. MCP server bir sistemi AI'a açan adaptördür ve sunduğu araçları AI'ın anlayabileceği şekilde tarif eder; MCP client ise agent'ın kendisi ya da onu çalıştıran uygulamadır. Kurumda yüzlerce MCP server olabileceği için MCP kataloğu hangilerinin onaylı olduğunu ve kimin erişebileceğini tutar (uygulama mağazası gibi); MCP gateway de yetkiyi kontrol eder ve her çağrıyı kaydeder. IBM tarafında watsonx Orchestrate agent'ları ve araç kataloğunu, watsonx.governance agent ve araç envanterini yönetir.</p>
+</section>
+</main>
+</body>
+</html>
